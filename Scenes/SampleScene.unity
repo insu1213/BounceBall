@@ -137,7 +137,7 @@ GameObject:
   - component: {fileID: 72084510}
   m_Layer: 7
   m_Name: Out
-  m_TagString: Untagged
+  m_TagString: Out
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -727,6 +727,7 @@ GameObject:
   - component: {fileID: 372344925}
   - component: {fileID: 372344924}
   - component: {fileID: 372344928}
+  - component: {fileID: 372344929}
   m_Layer: 0
   m_Name: Circle
   m_TagString: Ball
@@ -745,7 +746,7 @@ CircleCollider2D:
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_UsedByEffector: 0
+  m_UsedByEffector: 1
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
@@ -770,7 +771,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 5
+  m_Constraints: 4
 --- !u!212 &372344926
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -850,6 +851,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70564e75d1f1320409b58102d88f3b85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!251 &372344929
+PlatformEffector2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 372344923}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RotationalOffset: 0
+  m_UseOneWay: 0
+  m_UseOneWayGrouping: 0
+  m_SurfaceArc: 180
+  m_UseSideFriction: 0
+  m_UseSideBounce: 0
+  m_SideArc: 1
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0

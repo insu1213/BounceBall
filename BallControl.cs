@@ -17,12 +17,12 @@ public class BallControl : MonoBehaviour
     {
         if(Input.GetKey(KeyCode.D))
         {
-            this.transform.Translate(new Vector2(2, 0) * Time.deltaTime);
+            rigid.AddForce(Vector2.right * 200 * Time.deltaTime, ForceMode2D.Force);
         }
 
         if (Input.GetKey(KeyCode.A))
         {
-            this.transform.Translate(new Vector2(-2, 0) * Time.deltaTime);
+            rigid.AddForce(Vector2.left * 200 * Time.deltaTime, ForceMode2D.Force);
         }
         
         //if(this.transform.position == )
@@ -31,27 +31,42 @@ public class BallControl : MonoBehaviour
         //}
     }
 
-    void FixedUpdate()
+    //void FixedUpdate()
+    //{
+    //    Debug.DrawRay(this.transform.position, Vector3.down, new Color(0, 1, 0));
+
+    //    RaycastHit2D rayHit = Physics2D.Raycast(this.transform.position, Vector3.down, 1, LayerMask.GetMask("Platform", "Out"));
+
+    //    if (rayHit.collider != null)
+    //    {
+    //        if (rayHit.distance < 0.2f)
+    //        {
+    //            if(rayHit.collider.name == "Tilemap")
+    //            {
+    //                    Debug.Log("¹Ù´Ú¿¡ µµ´ÞÇÏ¿´À½.");
+    //                    rigid.AddForce(Vector2.up * 5, ForceMode2D.Impulse);
+    //            }
+    //            if (rayHit.collider.name == "Out")
+    //            {
+    //                Debug.Log("¾Æ¿ôµÊ");
+    //                this.transform.position = new Vector2(-5, -1);
+    //            }
+    //        }
+    //    }
+    //}
+
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.DrawRay(this.transform.position, Vector3.down, new Color(0, 1, 0));
-
-        RaycastHit2D rayHit = Physics2D.Raycast(this.transform.position, Vector3.down, 1, LayerMask.GetMask("Platform", "Out"));
-
-        if (rayHit.collider != null)
+        if(collision.collider.tag == "Platform")
         {
-            if (rayHit.distance < 0.2f)
-            {
-                if(rayHit.collider.name == "Tilemap")
-                {
-                        Debug.Log("¹Ù´Ú¿¡ µµ´ÞÇÏ¿´À½.");
-                        rigid.AddForce(Vector2.up * 5, ForceMode2D.Impulse);
-                }
-                if (rayHit.collider.name == "Out")
-                {
-                    Debug.Log("¾Æ¿ôµÊ");
-                    this.transform.position = new Vector2(-5, -1);
-                }
-            }
+            Debug.Log("¹Ù´Ú¿¡ µµ´ÞÇÏ¿´À½.");
+            rigid.AddForce(Vector2.up * 5, ForceMode2D.Impulse);
+        }
+
+        if(collision.collider.tag == "Out")
+        {
+            Debug.Log("¾Æ¿ôµÊ");
+            this.transform.position = new Vector2(-5, -1);
         }
     }
 }
